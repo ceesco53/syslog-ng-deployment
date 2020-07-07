@@ -33,3 +33,22 @@ spec:
             memory: 524Mi
       restartPolicy: Always
       terminationGracePeriodSeconds: 30
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ingress-syslog-ng
+  namespace: syslog-ng
+  labels:
+    app.kubernetes.io/name: ingress-syslog-ng
+    app.kubernetes.io/part-of: ingress-syslog-ng
+spec:
+  type: LoadBalancer
+  ports:
+    - name: syslog-ng
+      port: 514
+      targetPort: 514
+      protocol: UDP
+  selector:
+    app.kubernetes.io/name: ingress-syslog-ng
+    app.kubernetes.io/part-of: ingress-syslog-ng

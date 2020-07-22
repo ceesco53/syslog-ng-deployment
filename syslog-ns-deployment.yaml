@@ -27,6 +27,7 @@ spec:
         image: balabit/syslog-ng:latest
         ports:
         - containerPort: 514
+          protocol: UDP
         resources:
           requests:
             cpu: 250m
